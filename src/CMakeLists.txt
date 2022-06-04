@@ -1,10 +1,4 @@
-
-set(HEADER_LIST "${RandomGenerator_SOURCE_DIR}/include/RandomIntGenerator.hpp")
-
-add_executable(app app.cpp ${HEADER_LIST})
-
-# We need this directory
-target_include_directories(app PRIVATE ../include)
+add_executable(app app.cpp)
 
 target_compile_features(app PRIVATE cxx_std_17)
 
