@@ -7,11 +7,11 @@ FetchContent_MakeAvailable(catch)
 # Adds Catch2::Catch2
 
 set(HEADER_LIST "${RandomGenerator_SOURCE_DIR}/src/RandomIntGenerator.hpp")
+set(SOURCE_LIST "${RandomGenerator_SOURCE_DIR}/src/RandomIntGenerator.cpp")
 
 # Tests need to be added as executables first
-add_executable(UnitTest MainUnit.cpp RandomIntGeneratorTest.cpp ${HEADER_LIST})
+add_executable(UnitTest MainUnit.cpp RandomIntGeneratorTest.cpp ${HEADER_LIST} ${SOURCE_LIST})
 
-# We need this directory
 target_include_directories(UnitTest PRIVATE ../src)
 
 # I'm using C++17 in the test
