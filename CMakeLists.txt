@@ -44,3 +44,6 @@ add_subdirectory(src)
 
 # tests are here
 add_subdirectory(tests)
+
+# e2e test
+add_subdirectory(e2e-test)
