@@ -1,7 +1,7 @@
 #include "RandomIntGenerator.hpp"
 #include <catch2/catch.hpp>
 
-TEST_CASE("generateRandomInt") {
+TEST_CASE("generatesRandomInt") {
     auto intGenerator = RandomIntGenerator();
     auto randomInt1 = intGenerator.generate();
 
