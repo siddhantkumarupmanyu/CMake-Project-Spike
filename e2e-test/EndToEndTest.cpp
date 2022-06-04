@@ -1,3 +1,7 @@
+#define CATCH_CONFIG_MAIN
+
+#include <catch2/catch.hpp>
+
 #include <array>
 #include <cstdio>
 #include <iostream>
@@ -6,24 +10,29 @@
 #include <stdexcept>
 #include <string>
 
-int main() {
+std::string runApp();
+
+TEST_CASE("generatesRandomNumber") {
+    auto firstInvocation = runApp();
+    auto secondInvocation = runApp();
+
+    REQUIRE(secondInvocation != firstInvocation);
+}
+
+std::string runApp() {
     std::string cmd = "../src/app";
     std::array<char, 128> buffer;
-    std::string result;
     std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(cmd.c_str(), "r"),
                                                   pclose);
 
     if (!pipe) {
         throw std::runtime_error("popen() failed!");
     }
+    std::string result;
     while (fgets(buffer.data(), buffer.size(), pipe.get())) {
         result += buffer.data();
     }
-
-    std::cout << result << std::endl;
-
-    return 0;
+    return result;
 }
-
 
 // https://stackoverflow.com/a/478960
