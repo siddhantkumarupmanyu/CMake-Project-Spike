@@ -1,10 +1,9 @@
-
-
 #include <cstdlib>
+#include <string>
 
 int main() {
-    std::system("ls > test.output");
-    std::system("ls");
+    std::string app = "../src/app";
+    std::system(app.c_str());
 
     return 0;
 }

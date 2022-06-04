@@ -7,5 +7,6 @@ target_compile_features(testlib PRIVATE cxx_std_17)
 add_custom_target(
     e2e
     COMMAND EndToEndTest
+    DEPENDS app
     COMMENT "Running EndToEndTest"
 )
