@@ -12,12 +12,14 @@ add_executable(EndToEndTest EndToEndTest.cpp)
 # I'm using C++17 in the test
 target_compile_features(EndToEndTest PRIVATE cxx_std_17)
 
-
 target_link_libraries(EndToEndTest PRIVATE Catch2::Catch2)
+
+add_dependencies(EndToEndTest app)
 
 add_custom_target(
     e2e
     COMMAND EndToEndTest
-    DEPENDS app
     COMMENT "Running EndToEndTest"
 )
+
+add_test(NAME EndToEndTest COMMAND EndToEndTest)

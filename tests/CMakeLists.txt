@@ -9,17 +9,23 @@ FetchContent_MakeAvailable(catch)
 set(HEADER_LIST "${RandomGenerator_SOURCE_DIR}/src/RandomIntGenerator.hpp")
 
 # Tests need to be added as executables first
-add_executable(testlib testlib.cpp RandomIntGeneratorTest.cpp ${HEADER_LIST})
+add_executable(UnitTest MainUnit.cpp RandomIntGeneratorTest.cpp ${HEADER_LIST})
 
 # We need this directory
-target_include_directories(testlib PRIVATE ../src)
+target_include_directories(UnitTest PRIVATE ../src)
 
 # I'm using C++17 in the test
-target_compile_features(testlib PRIVATE cxx_std_17)
+target_compile_features(UnitTest PRIVATE cxx_std_17)
 
 # Should be linked to the main library, as well as the Catch2 testing library
-target_link_libraries(testlib PRIVATE Catch2::Catch2)
+target_link_libraries(UnitTest PRIVATE Catch2::Catch2)
+
+add_custom_target(
+    utest
+    COMMAND UnitTest
+    COMMENT "Running All UnitTests"
+)
 
 # If you register a test, then ctest and make test will run it.
 # You can also run examples and check the output, as well.
-add_test(NAME testlibtest COMMAND testlib) # Command can be a target
+add_test(NAME UnitTest COMMAND UnitTest) # Command can be a target
