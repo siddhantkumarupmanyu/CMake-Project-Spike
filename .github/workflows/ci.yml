@@ -1,0 +1,21 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  all-tests:
+    name: All Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Clean Build
+        run: ./clean_build.sh
+        
+      - name: Run CTest
+        run: cmake --build build --target test
