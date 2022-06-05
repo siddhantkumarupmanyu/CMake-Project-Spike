@@ -9,11 +9,13 @@
 #include <ostream>
 #include <stdexcept>
 #include <string>
+#include <unistd.h>
 
 std::string runApp();
 
 TEST_CASE("generatesRandomNumber") {
     auto firstInvocation = runApp();
+    sleep(1);
     auto secondInvocation = runApp();
 
     REQUIRE(secondInvocation != firstInvocation);
