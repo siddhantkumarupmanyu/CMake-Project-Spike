@@ -1,6 +1,11 @@
+#include "RandomIntGenerator.hpp"
 #include <iostream>
 
 int main() {
-    std::cout << "test" << std::endl;
+    auto intGenerator = RandomIntGenerator();
+    auto randomInt = intGenerator.generate();
+
+    std::cout << randomInt << std::endl;
+
     return 0;
 }

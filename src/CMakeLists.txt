@@ -1,4 +1,4 @@
-add_executable(app app.cpp)
+add_executable(app app.cpp RandomIntGenerator.cpp)
 
 target_compile_features(app PRIVATE cxx_std_17)
 

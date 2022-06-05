@@ -1,11 +1,7 @@
 #include "RandomIntGenerator.hpp"
+#include <cstdlib>
+#include <ctime>
 
-int RandomIntGenerator::generate() {
-    if (lastNumber == 2) {
-        lastNumber = 3;
-        return lastNumber;
-    } else {
-        lastNumber = 2;
-    }
-    return lastNumber;
-}
+RandomIntGenerator::RandomIntGenerator() { srand(time(0)); }
+
+int RandomIntGenerator::generate() { return rand(); }

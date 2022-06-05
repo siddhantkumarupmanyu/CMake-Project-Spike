@@ -1,10 +1,7 @@
 #pragma once
 
 class RandomIntGenerator {
-
-  private:
-    int lastNumber;
-
   public:
+    RandomIntGenerator();
     int generate();
 };
